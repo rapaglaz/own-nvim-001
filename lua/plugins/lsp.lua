@@ -11,11 +11,11 @@ local root_files = {
 
 return {
 	"neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"stevearc/conform.nvim",
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -136,6 +136,10 @@ return {
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 		cmp.setup({
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
@@ -148,7 +152,6 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
-				{ name = "copilot", group_index = 2 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
 			}, {
@@ -157,17 +160,25 @@ return {
 		})
 
 		vim.diagnostic.config({
-			virtual_text = false,
-			signs = true,
+			virtual_lines = { current_line = true },
+			-- signs = true,
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "●", -- lub inna ikona, np. ""
+					[vim.diagnostic.severity.WARN] = "●", -- lub inna ikona, np. ""
+					[vim.diagnostic.severity.INFO] = "●", -- lub inna ikona, np. ""
+					[vim.diagnostic.severity.HINT] = "●", -- lub inna ikona, np. ""
+				},
+			},
 			underline = true,
 			update_in_insert = false,
 			severity_sort = true,
-			float = {
-				border = "rounded",
-				source = "always",
-				header = "",
-				prefix = "",
-			},
+			-- float = {
+			-- 	border = "rounded",
+			-- 	source = "always",
+			-- 	header = "",
+			-- prefix = "",
+			-- },
 		})
 
 		vim.keymap.set("n", "<leader>.", function()

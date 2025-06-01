@@ -23,8 +23,7 @@ return {
 					"location",
 					"progress",
 				},
-				lualine_y = {
-				},
+				lualine_y = {},
 				lualine_z = {
 					function()
 						return os.date("%H:%M")
