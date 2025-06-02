@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
     vim.opt.showtabline = 2
-    vim.o.tabline = "%!v:lua.require'custom.ui.tabline'.render()"
+    vim.o.tabline = "%!v:lua.require'rapaglaz.ui.tabline'.render()"
 end
 
 function M.render()

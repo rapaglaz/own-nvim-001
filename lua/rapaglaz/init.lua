@@ -1,0 +1,5 @@
+require("rapaglaz.keymaps")
+require("rapaglaz.ui")
+require("rapaglaz.lazy")
+require("rapaglaz.options")
+require("rapaglaz.autocmd")
