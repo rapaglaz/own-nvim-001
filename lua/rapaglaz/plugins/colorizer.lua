@@ -7,7 +7,7 @@ return {
 			user_default_options = {
 				RGB = true,
 				RRGGBB = true,
-				names = true, -- "blue" etc
+				names = false, -- "blue" etc
 				RRGGBBAA = true,
 				rgb_fn = true, -- rgb(), rgba()
 				hsl_fn = true, -- hsl(), hsla()

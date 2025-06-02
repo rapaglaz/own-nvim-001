@@ -36,6 +36,7 @@ return {
 					{ name = "buffer",   group_index = 2 },
 					{ name = "path",     group_index = 2 },
 				}),
+				formatting = {},
 			})
 		end,
 	},

@@ -22,7 +22,7 @@ return {
 						vim.keymap.set(mode, l, r, opts)
 					end
 
-					-- Nawigacja
+					-- Navigation
 					map("n", "]c", function()
 						if vim.wo.diff then
 							return "]c"
@@ -43,7 +43,7 @@ return {
 						return "<Ignore>"
 					end, { expr = true })
 
-					-- Akcje
+					-- Actions
 					map("n", "<leader>hs", gs.stage_hunk)
 					map("n", "<leader>hr", gs.reset_hunk)
 					map("n", "<leader>hp", gs.preview_hunk)

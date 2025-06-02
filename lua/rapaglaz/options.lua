@@ -2,7 +2,7 @@ vim.lsp.enable({
 	"angular",
 	"bash",
 	"css",
-	-- "deno",
+	"deno",
 	"docker-compose",
 	"go",
 	"html",
@@ -15,7 +15,7 @@ vim.lsp.enable({
 })
 
 -- Highlight current line
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 vim.opt.guicursor = ""
 
 vim.opt.number = true
@@ -32,7 +32,6 @@ vim.opt.inccommand = "split"
 
 -- Case-insensitive search
 vim.opt.ignorecase = true
-
 
 vim.opt.termguicolors = true
 
@@ -61,7 +60,7 @@ vim.opt.termguicolors = true
 
 -- Set completeopt to have a better completion experience
 -- https://neovim.io/doc/user/options.html
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,noselect,preview,fuzzy"
 
 -- Split windows appear below, not above
 vim.opt.splitbelow = true
@@ -78,10 +77,10 @@ vim.diagnostic.config({
 	-- signs = true,
 	signs = {
 		text = {
-			[vim.diagnostic.severity.ERROR] = "●", -- lub inna ikona, np. ""
-			[vim.diagnostic.severity.WARN] = "●", -- lub inna ikona, np. ""
-			[vim.diagnostic.severity.INFO] = "●", -- lub inna ikona, np. ""
-			[vim.diagnostic.severity.HINT] = "●", -- lub inna ikona, np. ""
+			[vim.diagnostic.severity.ERROR] = "●", -- or other icon, e.g. ""
+			[vim.diagnostic.severity.WARN] = "●", -- or other icon, e.g. ""
+			[vim.diagnostic.severity.INFO] = "●", -- or other icon, e.g. ""
+			[vim.diagnostic.severity.HINT] = "●", -- or other icon, e.g. ""
 		},
 	},
 	underline = true,

@@ -6,7 +6,7 @@ return {
 		config = function()
 			local alpha = require("alpha")
 			local dashboard = require("alpha.themes.dashboard")
-			local user = vim.loop.os_get_passwd().username or os.getenv("USER") or ""
+			local user = os.getenv("USER") or ""
 
 			dashboard.section.header.val = {
 				"",
@@ -62,9 +62,7 @@ return {
 
 			dashboard.section.footer.val = function()
 				local v = vim.version()
-				local stat = vim.loop.fs_stat(vim.fn.stdpath("config") .. "/init.lua")
-				local build_date = stat and os.date("%d.%m.%Y", stat.mtime.sec) or "unknown"
-				return string.format("%d.%d.%d (build %s)", v.major, v.minor, v.patch, build_date)
+				return string.format("v%d.%d.%d", v.major, v.minor, v.patch)
 			end
 			alpha.setup(dashboard.config)
 		end,

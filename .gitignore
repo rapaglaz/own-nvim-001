@@ -1,0 +1,20 @@
+# Tools
+/.direnv/
+/venv/
+compile_commands.json
+/.envrc
+
+# IDEs
+/.vs/
+/.vscode/
+/.idea/
+
+.DS_Store
+*.mo
+.*.sw?
+*~
+*.pyc
+*.o
+*.so
+
+
