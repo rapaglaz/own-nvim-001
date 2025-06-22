@@ -18,9 +18,9 @@ return {
       local main_group = {
         type = "group",
         val = {
-          dashboard.button("e", "[+] New file", ":ene <BAR> startinsert<CR>"),
-          dashboard.button("f", "[f] Find file", ":Telescope find_files<CR>"),
-          dashboard.button("r", "[r] Recent", ":Telescope oldfiles<CR>"),
+          dashboard.button("e", "New file", ":ene <BAR> startinsert<CR>"),
+          dashboard.button("f", "Find file", ":Telescope find_files<CR>"),
+          dashboard.button("r", "Recent", ":Telescope oldfiles<CR>"),
           -- dashboard.button("p", "[p] File explorer", ":Neotree toggle<CR>"),
         },
         opts = { spacing = 1 },
@@ -28,12 +28,8 @@ return {
       local config_group = {
         type = "group",
         val = {
-          dashboard.button("c", "[c] Open init.lua", ":e $MYVIMRC<CR>"),
-          dashboard.button(
-            "v",
-            "[v] Find in config",
-            ":Telescope find_files cwd=~/.config/nvim<CR>"
-          ),
+          -- dashboard.button("c", "Open init.lua", ":e $MYVIMRC<CR>"),
+          dashboard.button("v", "Find in config", ":Telescope find_files cwd=~/.config/nvim<CR>"),
           -- dashboard.button("k", "[k] Edit keymaps", ":e ~/.config/nvim/lua/rapaglaz/keymaps.lua<CR>")
         },
         opts = { spacing = 1 },
@@ -41,17 +37,17 @@ return {
       local system_group = {
         type = "group",
         val = {
-          dashboard.button("u", "[u] Update plugins", ":Lazy update<CR>"),
-          dashboard.button("m", "[m] Update Mason", ":Mason<CR>"),
-          dashboard.button("h", "[h] CheckHealth", ":checkhealth<CR>"),
+          dashboard.button("u", "Update plugins", ":Lazy update<CR>"),
+          dashboard.button("m", "Update Mason", ":Mason<CR>"),
+          dashboard.button("h", "CheckHealth", ":checkhealth<CR>"),
         },
         opts = { spacing = 1 },
       }
       local docs_group = {
         type = "group",
         val = {
-          dashboard.button("d", "[d] Help", ":Telescope help_tags<CR>"),
-          dashboard.button("q", "[q] Quit", ":qa<CR>"),
+          dashboard.button("d", "Help", ":Telescope help_tags<CR>"),
+          dashboard.button("q", "Quit", ":qa<CR>"),
         },
         opts = { spacing = 1 },
       }
