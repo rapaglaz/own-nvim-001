@@ -21,6 +21,7 @@ return {
         "pyright",
         "rust_analyzer",
         "tailwindcss",
+        "angularls",
         "ts_ls",
         "vimls",
         "yamlls",
