@@ -3,6 +3,7 @@ return {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
+      -- "zbirenbaum/copilot-cmp",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -14,6 +15,16 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+      local has_words_before = function()
+        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+          return false
+        end
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0
+          and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$")
+            == nil
+      end
 
       -- Setup autocompletion
       cmp.setup({
@@ -33,11 +44,12 @@ return {
         },
 
         sources = cmp.config.sources({
-          { name = "nvim_lsp", priority = 1000 },
-          { name = "luasnip",  priority = 750, keyword_length = 2 },
-          { name = "path",     priority = 500 },
+          { name = "copilot", priority = 1000 },
+          { name = "nvim_lsp", priority = 900, keyword_length = 1 },
+          { name = "luasnip", priority = 750, keyword_length = 2 },
+          { name = "path", priority = 500 },
         }, {
-          { name = "buffer",   priority = 250, keyword_length = 3 },
+          { name = "buffer", priority = 250, keyword_length = 3 },
           { name = "nvim_lua", priority = 200 },
         }),
         mapping = cmp.mapping.preset.insert({
@@ -58,6 +70,13 @@ return {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false, -- Don't auto-select first item
           }),
+          ["<Tab>"] = vim.schedule_wrap(function(fallback)
+            if cmp.visible() and has_words_before() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            else
+              fallback()
+            end
+          end),
 
           -- Tab/Shift-Tab for snippets
           ["<Tab>"] = cmp.mapping(function(fallback)

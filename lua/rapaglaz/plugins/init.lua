@@ -11,6 +11,7 @@ return {
   { import = "rapaglaz.plugins.fidget" },
   { import = "rapaglaz.plugins.mason" },
   { import = "rapaglaz.plugins.lsp" },
+  { import = "rapaglaz.plugins.copilot" },
   { import = "rapaglaz.plugins.cmp" },
 
   { import = "rapaglaz.plugins.treesitter" },
