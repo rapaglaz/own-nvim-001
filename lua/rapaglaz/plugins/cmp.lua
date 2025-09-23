@@ -80,7 +80,9 @@ return {
 
           -- Tab/Shift-Tab for snippets
           ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
+            if require("copilot.suggestion").is_visible() then
+              require("copilot.suggestion").accept()
+            elseif cmp.visible() then
               cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             elseif luasnip.expandable() then
               luasnip.expand()
