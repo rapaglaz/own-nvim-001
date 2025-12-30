@@ -38,7 +38,6 @@ return {
       },
 
       trouble = false,
-      yadm = { enable = false },
       on_attach = function(bufnr)
         local gitsigns = require("gitsigns")
 
