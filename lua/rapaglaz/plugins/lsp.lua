@@ -25,7 +25,6 @@ return {
         "marksman",
         "pyright",
         "rust_analyzer",
-        "shellcheck",
         "tailwindcss",
         "angularls",
         "ts_ls",
