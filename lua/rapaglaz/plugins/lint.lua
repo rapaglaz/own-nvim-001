@@ -16,6 +16,9 @@ return {
       markdown = { "woke", "proselint" },
       text = { "woke" },
       sh = { "woke" },
+      bash = { "woke" },
+      fish = { "woke", "fish" },
+      zsh = { "woke", "zsh" },
     }
 
     -- Use an augroup to prevent duplicate autocmds on reload

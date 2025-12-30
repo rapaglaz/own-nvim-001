@@ -10,10 +10,13 @@ return {
 
       local lsp_servers = {
         "bashls",
+        "biome",
         "cssls",
+        "denols",
         "dockerls",
         "docker_language_server",
         "docker_compose_language_service",
+        "fish_lsp",
         "gh_actions_ls",
         "gopls",
         "html",
@@ -22,6 +25,7 @@ return {
         "marksman",
         "pyright",
         "rust_analyzer",
+        "shellcheck",
         "tailwindcss",
         "angularls",
         "ts_ls",
