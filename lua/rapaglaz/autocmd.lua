@@ -48,6 +48,33 @@ autocmd("LspAttach", {
   end,
 })
 
+-- Show virtual_text only for current line with diagnostic
+autocmd({ "CursorMoved", "CursorMovedI" }, {
+  desc = "Show virtual_text only on current line with diagnostic",
+  group = rapaglaz_group,
+  callback = function()
+    local diagnostic_ns = vim.api.nvim_create_namespace("current_line_diagnostics")
+    local bufnr = vim.api.nvim_get_current_buf()
+    local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+
+    -- Clear previous virtual text
+    vim.diagnostic.hide(diagnostic_ns, bufnr)
+
+    -- Get diagnostics for current line
+    local diagnostics = vim.diagnostic.get(bufnr, { lnum = line })
+
+    -- Show virtual text only if there are diagnostics on current line
+    if #diagnostics > 0 then
+      vim.diagnostic.show(diagnostic_ns, bufnr, diagnostics, {
+        virtual_text = {
+          spacing = 4,
+          prefix = "■",
+        },
+      })
+    end
+  end,
+})
+
 -- Auto-resize splits when window is resized
 autocmd("VimResized", {
   desc = "Resize splits when window is resized",

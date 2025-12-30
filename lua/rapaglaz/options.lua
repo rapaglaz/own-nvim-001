@@ -22,7 +22,7 @@ vim.opt.smartcase = true -- case-sensitive if uppercase is used
 vim.opt.termguicolors = true
 
 -- Fast updates for better experience
-vim.opt.updatetime = 250
+vim.opt.updatetime = 300
 vim.opt.timeoutlen = 300 -- for which-key
 
 vim.opt.swapfile = false
@@ -34,9 +34,9 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.scrolloff = 7
-vim.opt.sidescrolloff = 8 -- horizontal scroll offset
+vim.opt.sidescrolloff = 8  -- horizontal scroll offset
 vim.opt.signcolumn = "yes" -- always show sign column
-vim.opt.conceallevel = 2 -- for markdown and other files
+vim.opt.conceallevel = 2   -- for markdown and other files
 vim.opt.isfname:append("@-@")
 
 -- Disable word wrap, enable temporarily with `:set wrap` when needed
@@ -60,7 +60,7 @@ vim.opt.splitright = true
 
 -- Diagnostics configuration (float-only, no inline text)
 vim.diagnostic.config({
-  virtual_text = false, -- Disable inline virtual text
+  virtual_text = false, -- Will be shown dynamically on current line with diagnostic
   -- signs = true,
   signs = {
     text = {
