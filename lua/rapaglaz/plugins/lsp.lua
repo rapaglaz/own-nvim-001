@@ -9,13 +9,14 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lsp_servers = {
+        "angularls",
         "bashls",
         "biome",
         "cssls",
         "denols",
-        "dockerls",
-        "docker_language_server",
         "docker_compose_language_service",
+        "docker_language_server",
+        "dockerls",
         "fish_lsp",
         "gh_actions_ls",
         "gopls",
@@ -25,8 +26,9 @@ return {
         "marksman",
         "pyright",
         "rust_analyzer",
+        "stylua",
         "tailwindcss",
-        "angularls",
+        "taplo",
         "ts_ls",
         "vimls",
         "yamlls",
