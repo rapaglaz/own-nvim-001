@@ -20,6 +20,7 @@ return {
         "fish_lsp",
         "gh_actions_ls",
         "gopls",
+        "hls",
         "html",
         "jsonls",
         "lua_ls",
