@@ -10,6 +10,7 @@ return {
 
       local lsp_servers = {
         "angularls",
+        "astro",
         "bashls",
         "biome",
         "cssls",
@@ -28,10 +29,12 @@ return {
         "pyright",
         "rust_analyzer",
         "stylua",
+        "svelte",
         "tailwindcss",
         "taplo",
         "ts_ls",
         "vimls",
+        "vuels",
         "yamlls",
       }
 
