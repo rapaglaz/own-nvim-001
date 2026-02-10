@@ -13,7 +13,7 @@ Personal setup for coding and scripting. Nothing fancy, just what I need.
 Clone the repo:
 
 ```sh
-git clone <this-repo-url> ~/.config/nvim
+git clone https://github.com/rapaglaz/own-nvim-001 ~/.config/nvim
 ```
 
 Start Neovim:
