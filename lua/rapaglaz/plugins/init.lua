@@ -7,6 +7,7 @@ return {
   { import = "rapaglaz.plugins.comment" },
   { import = "rapaglaz.plugins.conform" },
   { import = "rapaglaz.plugins.lint" },
+  { import = "rapaglaz.plugins.todo-comments" },
 
   { import = "rapaglaz.plugins.fidget" },
   { import = "rapaglaz.plugins.mason" },
