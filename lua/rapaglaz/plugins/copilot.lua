@@ -54,7 +54,7 @@ return {
         trace_lsp_progress = false,
         log_lsp_messages = false,
       },
-      copilot_node_command = "node", -- Node.js version must be > 20 (wg Twojej notatki)
+      copilot_node_command = "node", -- Node.js version must be > 20
       workspace_folders = {},
       copilot_model = "",
       disable_limit_reached_message = false, -- suppress popup

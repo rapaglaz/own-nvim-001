@@ -12,7 +12,6 @@ return {
         "angularls",
         "astro",
         "bashls",
-        "biome",
         "cssls",
         "denols",
         "docker_compose_language_service",
@@ -27,7 +26,6 @@ return {
         "marksman",
         "pyright",
         "rust_analyzer",
-        "stylua",
         "svelte",
         "tailwindcss",
         "taplo",
@@ -45,6 +43,37 @@ return {
           function(server_name)
             lspconfig[server_name].setup({
               capabilities = capabilities,
+            })
+          end,
+          ["lua_ls"] = function()
+            lspconfig.lua_ls.setup({
+              capabilities = capabilities,
+              settings = {
+                Lua = {
+                  runtime = { version = "LuaJIT" },
+                  diagnostics = { globals = { "vim" } },
+                  workspace = {
+                    library = vim.api.nvim_get_runtime_file("", true),
+                    checkThirdParty = false,
+                  },
+                  telemetry = { enable = false },
+                },
+              },
+            })
+          end,
+
+          -- TypeScript with inlay hints
+          ["ts_ls"] = function()
+            lspconfig.ts_ls.setup({
+              capabilities = capabilities,
+              settings = {
+                typescript = {
+                  inlayHints = {
+                    includeInlayParameterNameHints = "all",
+                    includeInlayFunctionParameterTypeHints = true,
+                  },
+                },
+              },
             })
           end,
         },

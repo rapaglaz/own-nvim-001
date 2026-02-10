@@ -34,8 +34,8 @@ return {
           "ruff",
           "shfmt",
           "eslint_d",
-          "woke",
-          "proselint",
+          "shellcheck",
+          "markdownlint-cli2",
         },
 
         -- Auto-update tools

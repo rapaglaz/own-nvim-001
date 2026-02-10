@@ -14,13 +14,12 @@ return {
       python = { "ruff" },
       haskell = { "hlint" },
       go = { "golangcilint" },
-      markdown = { "woke", "proselint" },
+      markdown = { "markdownlint-cli2" },
       yaml = { "yamllint" },
-      text = { "woke" },
-      sh = { "woke" },
-      bash = { "woke" },
-      fish = { "woke", "fish" },
-      zsh = { "woke", "zsh" },
+      sh = { "shellcheck" },
+      bash = { "shellcheck" },
+      fish = { "fish" },
+      zsh = { "zsh" },
     }
 
     -- Use an augroup to prevent duplicate autocmds on reload
