@@ -1,1 +1,1 @@
-require("rapaglaz.ui.tabline").setup()
+-- require("rapaglaz.ui.tabline").setup()
