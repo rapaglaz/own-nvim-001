@@ -49,7 +49,7 @@ autocmd("LspAttach", {
 })
 
 -- Show virtual_text only for current line with diagnostic
-autocmd({ "CursorMoved", "CursorMovedI" }, {
+autocmd({ "CursorHold", "CursorHoldI" }, {
   desc = "Show virtual_text only on current line with diagnostic",
   group = rapaglaz_group,
   callback = function()
@@ -133,24 +133,6 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   desc = "Check if file changed outside of Neovim",
   group = rapaglaz_group,
   command = "checktime",
-})
-
--- Go to last location when opening a file
-autocmd("BufRead", {
-  desc = "Go to last location when opening a file",
-  group = rapaglaz_group,
-  callback = function(event)
-    local exclude = { "gitcommit" }
-    local buf = event.buf
-    if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].large_file then
-      return
-    end
-    local mark = vim.api.nvim_buf_get_mark(buf, '"')
-    local lcount = vim.api.nvim_buf_line_count(buf)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
 })
 
 -- Close NeoTree when it's the last window
