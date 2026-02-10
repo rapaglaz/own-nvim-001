@@ -1,5 +1,4 @@
 require("rapaglaz.keymaps")
-require("rapaglaz.ui")
 require("rapaglaz.lazy")
 require("rapaglaz.autocmd")
 require("rapaglaz.options")
