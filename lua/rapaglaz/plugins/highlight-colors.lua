@@ -14,13 +14,13 @@ return {
       virtual_symbol_suffix = " ",
 
       -- Enable for different color formats
-      enable_hex = true, -- #RRGGBB
-      enable_short_hex = true, -- #RGB
-      enable_rgb = true, -- rgb(255, 255, 255)
-      enable_hsl = true, -- hsl(360, 100%, 100%)
-      enable_var_usage = true, -- CSS variables var(--color)
+      enable_hex = true,          -- #RRGGBB
+      enable_short_hex = true,    -- #RGB
+      enable_rgb = true,          -- rgb(255, 255, 255)
+      enable_hsl = true,          -- hsl(360, 100%, 100%)
+      enable_var_usage = true,    -- CSS variables var(--color)
       enable_named_colors = true, -- red, blue, etc.
-      enable_tailwind = true, -- Tailwind CSS classes
+      enable_tailwind = true,     -- Tailwind CSS classes
 
       -- Tailwind CSS configuration
       tailwind = {
@@ -61,7 +61,7 @@ return {
     end, { desc = "Disable color highlighting for current buffer" })
 
     -- Keymaps for quick toggle
-    vim.keymap.set("n", "<leader>tc", function()
+    vim.keymap.set("n", "<leader>cc", function()
       require("nvim-highlight-colors").toggle()
     end, { desc = "Toggle color highlighting" })
   end,

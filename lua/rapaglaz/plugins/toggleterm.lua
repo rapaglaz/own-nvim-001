@@ -36,18 +36,18 @@ return {
       end, { desc = "Toggle float terminal (Ctrl+;)" })
 
       -- Toggle all terminals
-      vim.keymap.set("n", "<leader>tt", function()
+      vim.keymap.set("n", "<leader>TT", function()
         require("toggleterm").toggle_all()
       end, { desc = "Toggle all terminals" })
 
-      -- ToggleTerm navigation: cmd+alt+] / cmd+alt+[ (next/prev terminal)
-      vim.keymap.set({ "n", "t" }, "<D-A-]>", function()
+      -- ToggleTerm navigation
+      vim.keymap.set({ "n", "t" }, "<leader>Tn", function()
         require("toggleterm").next_terminal()
-      end, { desc = "Next ToggleTerm" })
+      end, { desc = "Next terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<D-A-[>", function()
+      vim.keymap.set({ "n", "t" }, "<leader>Tp", function()
         require("toggleterm").prev_terminal()
-      end, { desc = "Previous ToggleTerm" })
+      end, { desc = "Previous terminal" })
 
       -- Neovim tab switching: Ctrl+Arrow Right/Left
       vim.keymap.set({ "n", "t" }, "<C-Right>", ":tabnext<CR>", { desc = "Next tab" })

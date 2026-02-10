@@ -16,7 +16,8 @@ return {
       vim.o.timeoutlen = 300
     end,
     config = function()
-      require("which-key").setup({
+      local wk = require("which-key")
+      wk.setup({
         plugins = {
           spelling = { enabled = true },
         },
@@ -30,6 +31,9 @@ return {
           mappings = false,
         },
       })
+
+      -- Load centralized group definitions
+      wk.add(require("rapaglaz.which-key-groups"))
     end,
   },
 }

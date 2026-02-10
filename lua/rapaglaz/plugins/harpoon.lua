@@ -80,14 +80,6 @@ return {
             vim.keymap.set("n", "<leader>hp", function()
                 harpoon:list():prev()
             end, { desc = "Harpoon: Previous file" })
-
-            -- Register with which-key
-            local ok_wk, which_key = pcall(require, "which-key")
-            if ok_wk then
-                which_key.add({
-                    { "<leader>h", group = "harpoon" },
-                })
-            end
         end,
     },
 }

@@ -43,13 +43,3 @@ vim.keymap.set(
   "<cmd>buffers<CR>",
   { desc = "List buffers", noremap = true, silent = true }
 )
-
--- Register in which-key
-local ok_wk, which_key = pcall(require, "which-key")
-if ok_wk then
-  which_key.register({
-    ["<leader>c"] = { name = "+code" },
-    ["<leader>cf"] = "Format file (conform)",
-    ["<leader>b"] = { name = "+buffer" },
-  })
-end
