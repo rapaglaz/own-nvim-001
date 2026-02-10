@@ -38,6 +38,12 @@ return {
       })
       telescope.load_extension("fzf")
       telescope.load_extension("live_grep_args")
+
+      -- Set bright titles for Telescope windows
+      vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = "#c2cbeb", bold = true })
+      vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = "#c2cbeb", bold = true })
+      vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = "#c2cbeb", bold = true })
+
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
       vim.keymap.set("n", "<C-p>", builtin.git_files, {})
