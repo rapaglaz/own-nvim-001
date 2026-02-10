@@ -18,11 +18,38 @@ vim.keymap.set({ "n", "v" }, "<leader>cf", function()
   end
 end, { desc = "Format file (conform)", noremap = true, silent = true })
 
--- Rejestracja w which-key (bezpieczne require - pluginy mogą jeszcze nie być załadowane)
+-- Buffer navigation
+vim.keymap.set(
+  "n",
+  "<leader>bd",
+  "<cmd>bd<CR>",
+  { desc = "Delete buffer", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>bn",
+  "<cmd>bnext<CR>",
+  { desc = "Next buffer", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>bp",
+  "<cmd>bprevious<CR>",
+  { desc = "Previous buffer", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>bl",
+  "<cmd>buffers<CR>",
+  { desc = "List buffers", noremap = true, silent = true }
+)
+
+-- Register in which-key
 local ok_wk, which_key = pcall(require, "which-key")
 if ok_wk then
   which_key.register({
     ["<leader>c"] = { name = "+code" },
     ["<leader>cf"] = "Format file (conform)",
+    ["<leader>b"] = { name = "+buffer" },
   })
 end
