@@ -1,52 +1,44 @@
+-- Trouble.nvim v3 API
+-- v2 API (toggle("document_diagnostics"), use_diagnostic_signs, etc.) was removed.
+-- v3 uses mode-based config and open/toggle({ mode = "..." }) calls.
 return {
   {
     "folke/trouble.nvim",
-    config = function()
-      local trouble = require("trouble")
-      trouble.setup({
-        icons = false,
-        use_diagnostic_signs = true, -- Use Neovim diagnostic signs
-        auto_open = false, -- Do not auto-open Trouble
-        auto_close = true, -- Auto-close when no diagnostics
-        auto_preview = true, -- Preview location automatically
-        mode = "workspace_diagnostics", -- Default mode
-        group = true, -- Group results by file
-        padding = true, -- Add padding to window
-        cycle_results = true, -- Cycle item navigation
-      })
-
-      -- Keymaps with descriptions for which-key integration
-      vim.keymap.set("n", "<leader>tt", function()
-        trouble.toggle()
-      end, { desc = "Toggle Trouble" })
-
-      vim.keymap.set("n", "<leader>td", function()
-        trouble.toggle("document_diagnostics")
-      end, { desc = "Trouble Document Diagnostics" })
-
-      vim.keymap.set("n", "<leader>tw", function()
-        trouble.toggle("workspace_diagnostics")
-      end, { desc = "Trouble Workspace Diagnostics" })
-
-      vim.keymap.set("n", "<leader>tq", function()
-        trouble.toggle("quickfix")
-      end, { desc = "Trouble Quickfix" })
-
-      vim.keymap.set("n", "<leader>tl", function()
-        trouble.toggle("loclist")
-      end, { desc = "Trouble Location List" })
-
-      vim.keymap.set("n", "<leader>tr", function()
-        trouble.toggle("lsp_references")
-      end, { desc = "Trouble LSP References" })
-
-      vim.keymap.set("n", "[t", function()
-        trouble.next({ skip_groups = true, jump = true })
-      end, { desc = "Next Trouble Item" })
-
-      vim.keymap.set("n", "]t", function()
-        trouble.previous({ skip_groups = true, jump = true })
-      end, { desc = "Previous Trouble Item" })
-    end,
+    cmd = { "Trouble" },
+    opts = {
+      -- v3 options
+      auto_close = true,   -- close when no items remain
+      auto_preview = true, -- preview location under cursor
+      focus = false,       -- don't steal focus on open
+      restore = true,      -- restore last mode on re-open
+      follow = true,       -- follow current item in the list
+      modes = {
+        diagnostics = {
+          auto_open = false,
+        },
+      },
+      icons = {
+        indent        = {
+          fold_open  = " ",
+          fold_close = " ",
+        },
+        folder_closed = " ",
+        folder_open   = " ",
+        kinds         = vim.g.trouble_lsp_icons or {},
+      },
+      win = {
+        size = { height = 10 },
+      },
+    },
+    keys = {
+      { "<leader>tt", "<cmd>Trouble diagnostics toggle<cr>",                                       desc = "Trouble: Workspace Diagnostics" },
+      { "<leader>td", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",                          desc = "Trouble: Document Diagnostics" },
+      { "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>",                                       desc = "Trouble: Workspace Diagnostics" },
+      { "<leader>tq", "<cmd>Trouble qflist toggle<cr>",                                            desc = "Trouble: Quickfix" },
+      { "<leader>tl", "<cmd>Trouble loclist toggle<cr>",                                           desc = "Trouble: Location List" },
+      { "<leader>tr", "<cmd>Trouble lsp_references toggle<cr>",                                    desc = "Trouble: LSP References" },
+      { "]t",         function() require("trouble").next({ skip_groups = true, jump = true }) end, desc = "Next Trouble Item" },
+      { "[t",         function() require("trouble").prev({ skip_groups = true, jump = true }) end, desc = "Previous Trouble Item" },
+    },
   },
 }
