@@ -7,7 +7,7 @@ return {
       local alpha = require("alpha")
       local dashboard = require("alpha.themes.dashboard")
       local user = os.getenv("USER") or ""
-      local hostname = vim.loop.os_gethostname() or ""
+      local hostname = vim.uv.os_gethostname() or ""
 
       dashboard.section.header.val = {
         "",
