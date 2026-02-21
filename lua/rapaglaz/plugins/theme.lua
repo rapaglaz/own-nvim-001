@@ -51,7 +51,7 @@ return {
           lsp_trouble = true,
           semantic_tokens = true,
           treesitter = true,
-          treesitter_context = true,
+          treesitter_context = false,
           telescope = {
             enabled = true,
           },
@@ -139,6 +139,11 @@ return {
             -- Additional common plugin borders
             NoiceBorder = { fg = border_color, bg = "none" },  -- Noice plugin
             NotifyBorder = { fg = border_color, bg = "none" }, -- Notify plugin
+
+            -- Treesitter context (sticky scroll)
+            TreesitterContext = { bg = "none" },
+            TreesitterContextSeparator = { fg = colors.surface1 },
+            TreesitterContextLineNumber = { fg = colors.overlay0 },
           }
         end,
       })
