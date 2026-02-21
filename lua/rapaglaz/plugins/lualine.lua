@@ -1,5 +1,4 @@
 return {
-  enabled = true,
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   config = function()
@@ -16,6 +15,12 @@ return {
         lualine_b = { "branch", "diff" },
         lualine_c = {
           "filename",
+          {
+            "diagnostics",
+            sources = { "nvim_lsp" },
+            symbols = { error = "● ", warn = "● ", info = "● ", hint = "● " },
+            colored = true,
+          },
         },
         lualine_x = {
           "encoding",
@@ -40,13 +45,11 @@ return {
       tabline = {},
       extensions = {
         "neo-tree",
-        "nvim-tree",
         "fugitive",
         "toggleterm",
         "quickfix",
         "trouble",
         "man",
-        "symbols-outline",
       },
     })
   end,
