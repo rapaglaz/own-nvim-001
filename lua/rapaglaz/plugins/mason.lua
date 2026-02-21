@@ -38,10 +38,12 @@ return {
           "markdownlint-cli2",
         },
 
-        -- Auto-update tools
-        auto_update = true,
+        -- Auto-update disabled: prevents background activity on every startup.
+        -- Run :MasonToolsUpdate manually or via :Lazy build mason-tool-installer.
+        auto_update = false,
 
-        -- Run on start (when opening Neovim)
+        -- run_on_start: only install missing tools, not update existing ones.
+        -- Kept true but combined with auto_update=false it won't re-update.
         run_on_start = true,
 
         -- Delay after opening Neovim before starting installation (in ms)
