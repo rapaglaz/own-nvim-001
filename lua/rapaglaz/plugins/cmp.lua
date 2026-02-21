@@ -14,7 +14,6 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
       -- Setup autocompletion
       cmp.setup({
@@ -34,12 +33,13 @@ return {
         },
 
         sources = cmp.config.sources({
-          { name = "copilot", priority = 1000 },
+          -- copilot suggestions are handled via copilot.suggestion.accept()
+          -- inside the <Tab> mapping below; copilot-cmp is not installed.
           { name = "nvim_lsp", priority = 900, keyword_length = 1 },
-          { name = "luasnip", priority = 750, keyword_length = 2 },
-          { name = "path", priority = 500 },
+          { name = "luasnip",  priority = 750, keyword_length = 2 },
+          { name = "path",     priority = 500 },
         }, {
-          { name = "buffer", priority = 250, keyword_length = 3 },
+          { name = "buffer",   priority = 250, keyword_length = 3 },
           { name = "nvim_lua", priority = 200 },
         }),
         mapping = cmp.mapping.preset.insert({
@@ -94,9 +94,6 @@ return {
           ghost_text = false,
         },
       })
-
-      -- Store capabilities in a more accessible way
-      _G.cmp_nvim_lsp_capabilities = cmp_nvim_lsp.default_capabilities()
     end,
   },
 }
