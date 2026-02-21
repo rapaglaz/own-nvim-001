@@ -5,6 +5,10 @@ return {
     build = "deno task --quiet build:fast",
     config = function()
       local ok, peek = pcall(require, "peek")
+      if not ok then
+        vim.notify("peek.nvim not loaded: " .. tostring(peek), vim.log.levels.ERROR)
+        return
+      end
 
       peek.setup({
         filetype = { "markdown" },
