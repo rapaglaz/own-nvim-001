@@ -37,7 +37,7 @@ return {
         col = 1,
       },
 
-      trouble = false,
+      -- note: `trouble` is not a valid gitsigns option; removed
       on_attach = function(bufnr)
         local gitsigns = require("gitsigns")
 
