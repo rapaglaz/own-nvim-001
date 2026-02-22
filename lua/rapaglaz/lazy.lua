@@ -54,15 +54,15 @@ local opts = {
   -- Installation configuration
   install = {
     missing = true,                 -- install missing plugins on startup
-    colorscheme = { "catppuccin" }, -- try to load colorschemes in this order
+    colorscheme = { "catppuccin" }, -- try to load color schemes in this order
   },
 
   -- Update checker
   checker = {
     enabled = true,
     concurrency = 2,
-    notify = false,   -- don't notify about updates
-    frequency = 3600, -- check for updates every hour
+    notify = false,    -- don't notify about updates
+    frequency = 86400, -- check once a day
   },
 
   -- Change detection
