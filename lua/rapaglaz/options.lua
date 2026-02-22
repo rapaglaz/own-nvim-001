@@ -1,3 +1,5 @@
+vim.o.fileencoding = "utf-8" -- never accidentally write latin-1
+
 -- Highlight current line
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
@@ -42,14 +44,11 @@ vim.opt.isfname:append("@-@")
 -- Disable word wrap, enable temporarily with `:set wrap` when needed
 vim.opt.wrap = false
 
--- Folding (treesitter-based for Neovim 0.11+)
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevelstart = 99 -- start with all folds open
-
 -- Set completeopt to have a better completion experience
 -- https://neovim.io/doc/user/options.html
-vim.opt.completeopt = "menuone,noselect,preview"
+-- 'preview' removed: with nvim-cmp managing its own doc window it causes
+-- spurious split flicker and is meaningless here.
+vim.opt.completeopt = "menuone,noselect,noinsert"
 vim.opt.pumheight = 10 -- max completion items to show
 
 -- Split windows appear below, not above
