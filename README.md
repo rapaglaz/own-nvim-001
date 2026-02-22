@@ -26,4 +26,4 @@ Plugins install automatically on first run. Takes a minute or two.
 
 ---
 
-That's it. Use it if you want.
+That's it.
