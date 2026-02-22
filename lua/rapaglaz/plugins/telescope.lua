@@ -10,10 +10,6 @@ return {
         enabled = vim.fn.executable("make") == 1,
       },
       "nvim-telescope/telescope-live-grep-args.nvim",
-      {
-        "nvim-telescope/telescope-frecency.nvim",
-        dependencies = { "kkharji/sqlite.lua" },
-      },
     },
     event = "VeryLazy",
     config = function()
@@ -48,15 +44,9 @@ return {
             theme = "dropdown",
           },
         },
-        extensions = {
-          frecency = {
-            enable_prompt_mappings = true,
-          },
-        },
       })
       telescope.load_extension("fzf")
       telescope.load_extension("live_grep_args")
-      telescope.load_extension("frecency")
 
       -- Set bright titles for Telescope windows
       vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = "#c2cbeb", bold = true })
@@ -74,11 +64,6 @@ return {
           builtin.find_files({ cwd = buf_dir })
         end
       end, { desc = "Find files (in buffer dir)" })
-      vim.keymap.set("n", "<leader>pF", function()
-        telescope.extensions.frecency.frecency({
-          workspace = "CWD",
-        })
-      end, { desc = "Find files (frecency)" })
       vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Git files" })
       vim.keymap.set("n", "<leader>pws", function()
         local word = vim.fn.expand("<cword>")
