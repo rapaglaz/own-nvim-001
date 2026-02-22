@@ -36,6 +36,8 @@ return {
           "eslint_d",
           "shellcheck",
           "markdownlint-cli2",
+          "yamllint",
+          "golangcilint",
         },
 
         -- Auto-update disabled: prevents background activity on every startup.
