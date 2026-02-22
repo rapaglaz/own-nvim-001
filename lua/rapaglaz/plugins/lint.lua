@@ -12,7 +12,7 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "ruff" },
-      go = { "golangcilint" },
+      go = { "golangci-lint" },
       markdown = { "markdownlint-cli2" },
       yaml = { "yamllint" },
       sh = { "shellcheck" },

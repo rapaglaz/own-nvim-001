@@ -28,7 +28,7 @@ return {
       require("mason-tool-installer").setup({
         -- NOTE: LSP servers are handled by mason-lspconfig.nvim, not here
         ensure_installed = {
-          "prettier",
+          "prettierd",
           "stylua",
           "taplo",
           "ruff",
@@ -37,7 +37,7 @@ return {
           "shellcheck",
           "markdownlint-cli2",
           "yamllint",
-          "golangcilint",
+          "golangci-lint",
         },
 
         -- Auto-update disabled: prevents background activity on every startup.
