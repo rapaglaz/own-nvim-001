@@ -18,6 +18,7 @@ return {
   { import = "rapaglaz.plugins.treesitter" },
 
   { import = "rapaglaz.plugins.telescope" },
+  { import = "rapaglaz.plugins.frecency" },
   { import = "rapaglaz.plugins.harpoon" },
   { import = "rapaglaz.plugins.neotree" },
   { import = "rapaglaz.plugins.toggleterm" },
