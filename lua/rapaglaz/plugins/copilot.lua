@@ -22,11 +22,14 @@ return {
       suggestion = {
         enabled = true,
         auto_trigger = true,
-        hide_during_completion = false,
+        hide_during_completion = true, -- ghost text overlaps cmp menu when false
         debounce = 75,
         trigger_on_accept = true,
         keymap = {
-          accept = "<Tab>",
+          -- <Tab> is managed exclusively by nvim-cmp (see cmp.lua).
+          -- copilot.suggestion.accept() is called from within cmp's <Tab> mapping.
+          -- Setting accept here would create a double-registration conflict.
+          accept = false,
           accept_word = false,
           accept_line = false,
           next = "<M-]>",
