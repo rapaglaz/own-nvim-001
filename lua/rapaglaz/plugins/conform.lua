@@ -6,7 +6,10 @@ return {
     require("conform").setup({
       format_on_save = {
         timeout_ms = 1000,
-        lsp_fallback = false,
+        -- lsp_format = "fallback": consistent with the manual <leader>cf keymap
+        -- (conform falls back to LSP when no formatter is configured for the ft)
+        -- lsp_fallback was renamed to lsp_format in conform.nvim v7+
+        lsp_format = "fallback",
       },
       formatters_by_ft = {
         lua = { "stylua" },
