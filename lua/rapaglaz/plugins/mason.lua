@@ -38,6 +38,7 @@ return {
           "markdownlint-cli2",
           "yamllint",
           "golangci-lint",
+          "treesitter_cli",
         },
 
         -- Auto-update disabled: prevents background activity on every startup.
