@@ -10,6 +10,8 @@ return {
 
       dashboard.section.header.val = {
         "",
+        "",
+        "",
         "  Hi " .. user,
         "",
       }
