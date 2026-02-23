@@ -132,9 +132,10 @@ return {
             DiagnosticFloatingHint = { fg = colors.teal, bg = "none" },
 
             -- Neo-tree file explorer borders
-            -- NeoTreeBorder = { fg = border_color, bg = "none" },
-            -- NeoTreeFloatBorder = { fg = border_color, bg = "none" },
-            -- NeoTreePopupBorder = { fg = border_color, bg = "none" },
+            NeoTreeBorder = { fg = border_color, bg = "none" },
+            NeoTreeFloatBorder = { fg = border_color, bg = "none" },
+            NeoTreePopupBorder = { fg = border_color, bg = "none" },
+            NeoTreeIndentMarker = { fg = colors.surface1, bg = "none" },
 
             -- Additional common plugin borders
             NoiceBorder = { fg = border_color, bg = "none" },  -- Noice plugin
