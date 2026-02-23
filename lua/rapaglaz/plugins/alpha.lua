@@ -7,7 +7,6 @@ return {
       local alpha = require("alpha")
       local dashboard = require("alpha.themes.dashboard")
       local user = os.getenv("USER") or ""
-      local hostname = vim.uv.os_gethostname() or ""
 
       dashboard.section.header.val = {
         "",
@@ -19,18 +18,20 @@ return {
         type = "group",
         val = {
           dashboard.button("e", "New file", ":ene <BAR> startinsert<CR>"),
-          dashboard.button("f", "Find file", ":Telescope find_files<CR>"),
+          dashboard.button("f", "Find file", ":Telescope frecency workspace=CWD<CR>"),
           dashboard.button("r", "Recent", ":Telescope oldfiles<CR>"),
-          -- dashboard.button("p", "[p] File explorer", ":Neotree toggle<CR>"),
+          dashboard.button(
+            "p",
+            "File explorer",
+            ":Neotree toggle source=filesystem reveal=true position=float<CR>"
+          ),
         },
         opts = { spacing = 1 },
       }
       local config_group = {
         type = "group",
         val = {
-          -- dashboard.button("c", "Open init.lua", ":e $MYVIMRC<CR>"),
           dashboard.button("v", "Find in config", ":Telescope find_files cwd=~/.config/nvim<CR>"),
-          -- dashboard.button("k", "[k] Edit keymaps", ":e ~/.config/nvim/lua/rapaglaz/keymaps.lua<CR>")
         },
         opts = { spacing = 1 },
       }
