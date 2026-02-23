@@ -7,6 +7,7 @@ return {
       "nvim-tree/nvim-web-devicons", -- icons
       "MunifTanjim/nui.nvim",
     },
+    lazy = false, -- neo-tree will lazily load itself
     config = function()
       require("neo-tree").setup({
         close_if_last_window = true,
@@ -19,7 +20,7 @@ return {
         default_component_configs = {
           indent = {
             with_markers = true,
-            indent_size = 2,
+            indent_size = 3,
           },
         },
         window = {
@@ -39,7 +40,7 @@ return {
       vim.keymap.set(
         "n",
         "<F12>",
-        "<cmd>Neotree toggle<CR>",
+        "<cmd>Neotree toggle reveal %:p:h:h<CR>",
         { desc = "Toggle NeoTree (right panel)" }
       )
     end,
