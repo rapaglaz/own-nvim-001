@@ -4,7 +4,6 @@ return {
     event = "VeryLazy",
     build = ":TSUpdate",
     config = function()
-      -- New nvim-treesitter API (after full rewrite)
       require("nvim-treesitter").setup({
         install_dir = vim.fn.stdpath("data") .. "/site",
       })
@@ -58,7 +57,7 @@ return {
           "vue",
           "yaml",
         })
-      end) -- end vim.schedule
+      end)
 
       -- Enable syntax highlighting for any filetype that has a parser installed.
       -- pcall silently skips filetypes with no parser instead of erroring.
@@ -67,7 +66,9 @@ return {
         callback = function(ev)
           -- Skip special buffers (terminal, quickfix, prompt, etc.)
           -- to avoid pcall noise and unnecessary parser lookups.
-          if vim.bo[ev.buf].buftype ~= "" then return end
+          if vim.bo[ev.buf].buftype ~= "" then
+            return
+          end
           pcall(vim.treesitter.start)
         end,
       })
