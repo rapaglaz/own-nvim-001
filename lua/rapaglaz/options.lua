@@ -1,5 +1,3 @@
-vim.o.fileencoding = "utf-8" -- never accidentally write latin-1
-
 -- Highlight current line
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
