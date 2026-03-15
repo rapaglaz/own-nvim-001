@@ -24,8 +24,11 @@ return {
           },
         },
         window = {
-          position = "right", -- display on the right
-          width = 36,
+          position = "float",
+          mappings = {
+            -- navigate to parent directory
+            ["-"] = "navigate_up",
+          },
         },
         filesystem = {
           filtered_items = {
@@ -36,13 +39,44 @@ return {
         },
       })
 
-      -- Map F12 to toggle NeoTree panel
-      vim.keymap.set(
-        "n",
-        "<F12>",
-        "<cmd>Neotree toggle reveal %:p:h:h<CR>",
-        { desc = "Toggle NeoTree (right panel)" }
-      )
+      -- Return VCS root (via .git search) or current file's directory.
+      local function get_root()
+        local file = vim.fn.expand("%:p")
+        if file == "" then
+          return vim.fn.getcwd()
+        end
+        local dir = vim.fn.fnamemodify(file, ":h")
+        -- Search upward for .git - also handles worktrees via .git file)
+        local git_dir = vim.fn.finddir(".git", dir .. ";")
+        if git_dir ~= "" then
+          return vim.fn.fnamemodify(git_dir, ":h:p")
+        end
+        return dir
+      end
+
+      -- \e[24;2~ is the standard xterm/VT220 sequence for S-F12.
+      vim.cmd([[
+        if !has('gui_running')
+          execute "set <S-F12>=\<Esc>[24;2~"
+        endif
+      ]])
+
+      local function toggle_float()
+        local root = get_root()
+        vim.cmd("Neotree float toggle reveal dir=" .. vim.fn.fnameescape(root))
+      end
+
+      local function toggle_right()
+        local root = get_root()
+        vim.cmd("Neotree right toggle reveal dir=" .. vim.fn.fnameescape(root))
+      end
+
+      -- F12: toggle NeoTree as float (smart root)
+      vim.keymap.set("n", "<F12>", toggle_float, { desc = "Toggle NeoTree float (smart root)" })
+
+      -- <F24> is an alias some terminals (e.g. kitty) use for S-F12.
+      vim.keymap.set("n", "<S-F12>", toggle_right, { desc = "Toggle NeoTree right panel (smart root)" })
+      vim.keymap.set("n", "<F24>", toggle_right, { desc = "Toggle NeoTree right panel (smart root)" })
     end,
   },
 }
