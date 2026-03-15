@@ -29,6 +29,5 @@ return {
 
   { import = "rapaglaz.plugins.lualine" },
   { import = "rapaglaz.plugins.trouble" },
-  { import = "rapaglaz.plugins.peek" },
   { import = "rapaglaz.plugins.which-key" },
 }
