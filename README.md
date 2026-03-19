@@ -24,6 +24,12 @@ nvim
 
 Plugins install automatically on first run. Takes a minute or two.
 
+After plugins are installed, run the following command inside Neovim to install all LSP servers, formatters, and linters:
+
+```
+:MasonToolsInstall
+```
+
 ---
 
 That's it.

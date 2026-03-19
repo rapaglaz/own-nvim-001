@@ -53,8 +53,8 @@ local opts = {
 
   -- Installation configuration
   install = {
-    missing = true,                      -- install missing plugins on startup
-    colorscheme = { "catppuccin-nvim" }, -- try to load color schemes in this order
+    missing = true,                 -- install missing plugins on startup
+    colorscheme = { "catppuccin" }, -- try to load color schemes in this order
   },
 
   -- Update checker
