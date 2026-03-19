@@ -85,3 +85,6 @@ vim.diagnostic.config({
 
 -- Disable log because it's slowing down Neovim
 vim.lsp.set_log_level(vim.log.levels.OFF)
+
+-- Disable vertical and horizontal scrolling in editor
+vim.opt.mousescroll = "hor:0"
