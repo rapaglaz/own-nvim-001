@@ -19,6 +19,11 @@ return {
       local lspconfig = require("lspconfig")
       local mason_lspconfig = require("mason-lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- Enable workspace/didChangeWatchedFiles so LSPs react to out-of-buffer
+      -- changes (e.g. git checkout, code generators, tsc --watch output).
+      capabilities.workspace = vim.tbl_deep_extend("force", capabilities.workspace or {}, {
+        didChangeWatchedFiles = { dynamicRegistration = true },
+      })
       -- Reused across all default-handler setups to avoid creating a new table per server
       local default_opts = { capabilities = capabilities }
 
