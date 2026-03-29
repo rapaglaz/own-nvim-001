@@ -16,7 +16,6 @@ return {
       -- Install parsers — deferred so it doesn't block startup
       vim.schedule(function()
         require("nvim-treesitter").install({
-          "apache",
           "astro",
           "awk",
           "bash",
