@@ -4,7 +4,7 @@ return {
     branch = "v3.x", -- stable branch
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- icons
+      "echasnovski/mini.icons", -- icons
       "MunifTanjim/nui.nvim",
     },
     lazy = false, -- neo-tree will lazily load itself
@@ -21,6 +21,19 @@ return {
           indent = {
             with_markers = true,
             indent_size = 3,
+          },
+          git_status = {
+            symbols = {
+              added     = "✚",
+              modified  = "✎",
+              deleted   = "✖",
+              renamed   = "➜",
+              untracked = "★",
+              ignored   = "◌",
+              unstaged  = "✗",
+              staged    = "✓",
+              conflict  = "",
+            },
           },
         },
         window = {

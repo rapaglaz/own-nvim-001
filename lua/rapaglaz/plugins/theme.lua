@@ -40,6 +40,7 @@ return {
         color_overrides = {},
         default_integrations = true,
         integrations = {
+          mini = { enabled = true, indentscope_color = "" },
           alpha = true,
           indent_blankline = { enabled = true },
           cmp = true,
