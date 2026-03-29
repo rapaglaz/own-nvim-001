@@ -10,12 +10,14 @@ vim.filetype.add({
     njk      = "nunjucks",
     twig     = "twig",
     ejs      = "ejs",
+    jq       = "jq",
   },
   filename = {
     ["docker-compose.yml"]  = "yaml.docker-compose",
     ["docker-compose.yaml"] = "yaml.docker-compose",
     ["compose.yml"]         = "yaml.docker-compose",
     ["compose.yaml"]        = "yaml.docker-compose",
+    ["go.sum"]              = "gosum",
   },
   pattern = {
     [".*%.gohtml"]               = "gotmpl",
