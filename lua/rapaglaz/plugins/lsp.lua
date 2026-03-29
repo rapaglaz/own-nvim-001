@@ -92,6 +92,18 @@ return {
           end,
         },
       })
+
+      if vim.fn.executable("haskell-language-server-wrapper") == 1 then
+        vim.lsp.config("hls", {
+          capabilities = capabilities,
+          settings = {
+            haskell = {
+              formattingProvider = "fourmolu",
+            },
+          },
+        })
+        vim.lsp.enable("hls")
+      end
     end,
   },
 }
