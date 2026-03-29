@@ -86,5 +86,12 @@ vim.diagnostic.config({
 -- Disable log because it's slowing down Neovim
 vim.lsp.set_log_level(vim.log.levels.OFF)
 
+-- Disable legacy remote providers — not needed with a pure Lua config.
+-- Mason and LSP servers use system Node/Python directly, not these bridges.
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- Disable vertical and horizontal scrolling in editor
 vim.opt.mousescroll = "hor:0"
