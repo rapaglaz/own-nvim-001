@@ -55,9 +55,10 @@ vim.opt.splitbelow = true
 -- Split windows appear to the right instead of left
 vim.opt.splitright = true
 
--- Diagnostics configuration (float-only, no inline text)
+-- Diagnostics configuration
 vim.diagnostic.config({
-  virtual_text = false, -- Will be shown dynamically on current line with diagnostic
+  virtual_text = false,
+  virtual_lines = { current_line = true }, -- nvim 0.11: show inline only for current line
   -- signs = true,
   signs = {
     text = {

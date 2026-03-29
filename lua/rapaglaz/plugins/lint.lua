@@ -24,23 +24,20 @@ return {
     -- Use an augroup to prevent duplicate autocmds on reload
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
-    -- BufEnter excluded: it fires on every window/buffer switch and causes
-    -- unnecessary linter invocations. InsertLeave catches edits before explicit save.
-    vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
-      group = lint_augroup,
-      callback = function()
-        local ok, err = pcall(lint.try_lint)
-        if not ok then
-          vim.notify("Lint error: " .. tostring(err), vim.log.levels.ERROR)
-        end
-      end,
-    })
-
-    vim.keymap.set("n", "<leader>l", function()
+    local function run_lint()
       local ok, err = pcall(lint.try_lint)
       if not ok then
         vim.notify("Lint error: " .. tostring(err), vim.log.levels.ERROR)
       end
-    end, { desc = "Trigger linting for current file" })
+    end
+
+    -- BufEnter excluded: it fires on every window/buffer switch and causes
+    -- unnecessary linter invocations. InsertLeave catches edits before explicit save.
+    vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
+      group = lint_augroup,
+      callback = run_lint,
+    })
+
+    vim.keymap.set("n", "<leader>l", run_lint, { desc = "Trigger linting for current file" })
   end,
 }
