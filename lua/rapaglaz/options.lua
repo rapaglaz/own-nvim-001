@@ -85,7 +85,7 @@ vim.diagnostic.config({
 -- Auto-show disabled for cleaner experience
 
 -- Disable log because it's slowing down Neovim
-vim.lsp.set_log_level(vim.log.levels.OFF)
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 -- Disable legacy remote providers — not needed with a pure Lua config.
 -- Mason and LSP servers use system Node/Python directly, not these bridges.
