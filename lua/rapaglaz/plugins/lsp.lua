@@ -12,6 +12,8 @@ return {
     },
   },
 
+  { "b0o/schemastore.nvim" },
+
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "j-hui/fidget.nvim" },
@@ -75,6 +77,30 @@ return {
                     checkThirdParty = false,
                   },
                   telemetry = { enable = false },
+                },
+              },
+            })
+          end,
+
+          ["jsonls"] = function()
+            lspconfig.jsonls.setup({
+              capabilities = capabilities,
+              settings = {
+                json = {
+                  schemas = require("schemastore").json.schemas(),
+                  validate = { enable = true },
+                },
+              },
+            })
+          end,
+
+          ["yamlls"] = function()
+            lspconfig.yamlls.setup({
+              capabilities = capabilities,
+              settings = {
+                yaml = {
+                  schemaStore = { enable = false, url = "" },
+                  schemas = require("schemastore").yaml.schemas(),
                 },
               },
             })
