@@ -1,5 +1,5 @@
 require("rapaglaz.keymaps")
 require("rapaglaz.lazy")
+require("rapaglaz.filetypes")
 require("rapaglaz.autocmd")
 require("rapaglaz.options")
-require("rapaglaz.filetypes")
