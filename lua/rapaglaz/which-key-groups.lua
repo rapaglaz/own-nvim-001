@@ -6,7 +6,6 @@ return {
     { "<leader>g",  group = "git" },
     { "<leader>gt", group = "git toggle" },
     { "<leader>h",  group = "harpoon" },
-    { "<leader>ih", group = "inlay hints" },
     { "<leader>l",  group = "lint" },
     { "<leader>m",  group = "markdown" },
     { "<leader>p",  group = "project/search" },
@@ -17,4 +16,6 @@ return {
     { "<leader>u",  group = "undo" },
     { "<leader>v",  group = "vim" },
     { "<leader>w",  group = "workspace" },
+    -- nvim 0.10-0.12 built-in LSP mappings (grn, gra, grr, gri, grt, grx)
+    { "gr",         group = "lsp" },
 }

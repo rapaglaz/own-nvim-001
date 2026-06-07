@@ -24,6 +24,10 @@ return {
       capabilities.workspace = vim.tbl_deep_extend("force", capabilities.workspace or {}, {
         didChangeWatchedFiles = { dynamicRegistration = true },
       })
+      -- nvim 0.12 enables document_color by default; nvim-highlight-colors already
+      -- handles color rendering with broader support (hex, Tailwind, etc.) so
+      -- disable the LSP one to avoid duplicate virtual text decorations.
+      capabilities.colorProvider = false
       -- Reused across all default-handler setups to avoid creating a new table per server
       local default_opts = { capabilities = capabilities }
 

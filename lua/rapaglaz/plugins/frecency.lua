@@ -5,7 +5,6 @@ return {
         "nvim-telescope/telescope.nvim",
     },
     ---@module 'frecency'
-    ---@type FrecencyOpts
     opts = {
         -- Show confirmation dialog before validating (pruning) DB
         db_safe_mode = false,
