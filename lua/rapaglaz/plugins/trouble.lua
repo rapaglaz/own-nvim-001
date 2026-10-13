@@ -33,7 +33,6 @@ return {
     keys = {
       { "<leader>tt", "<cmd>Trouble diagnostics toggle<cr>",                                       desc = "Trouble: Workspace Diagnostics" },
       { "<leader>td", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",                          desc = "Trouble: Document Diagnostics" },
-      { "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>",                                       desc = "Trouble: Workspace Diagnostics" },
       { "<leader>tq", "<cmd>Trouble qflist toggle<cr>",                                            desc = "Trouble: Quickfix" },
       { "<leader>tl", "<cmd>Trouble loclist toggle<cr>",                                           desc = "Trouble: Location List" },
       { "<leader>tr", "<cmd>Trouble lsp_references toggle<cr>",                                    desc = "Trouble: LSP References" },

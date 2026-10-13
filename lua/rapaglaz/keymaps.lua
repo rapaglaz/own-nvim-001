@@ -12,11 +12,11 @@ vim.keymap.set(
   { desc = "Clear search highlight", silent = true }
 )
 
--- Global format file (<leader>cf) - works in normal, visual, and insert mode
+-- Global format file (<leader>cf) - works in normal and visual mode
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()
   local ok, conform = pcall(require, "conform")
   if ok then
-    conform.format({ async = true, lsp_fallback = true })
+    conform.format({ async = true, lsp_format = "fallback" })
   else
     vim.notify("conform.nvim not found!", vim.log.levels.ERROR)
   end
