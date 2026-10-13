@@ -7,7 +7,6 @@ return {
   { "<leader>gt", group = "git toggle" },
   { "<leader>h", group = "harpoon" },
   { "<leader>l", group = "lint" },
-  { "<leader>m", group = "markdown" },
   { "<leader>p", group = "project/search" },
   { "<leader>r", group = "refactor" },
   { "<leader>s", group = "search" },
