@@ -4,7 +4,7 @@ Personal setup for coding and scripting. Nothing fancy, just what I need.
 
 ## Requirements
 
-- Neovim 0.11+
+- Neovim 0.12+
 - Node 22+
 - `git`, `ripgrep`, `fd`
 
