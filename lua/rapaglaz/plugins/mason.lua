@@ -52,8 +52,8 @@ return {
         -- Delay after opening Neovim before starting installation (in ms)
         start_delay = 3000,
 
-        -- Only install tools that are not already installed
-        debounce_hours = 24,
+        -- No debounce_hours: it skips the whole run (including newly added
+        -- tools) if the last run was recent. Installed tools are skipped anyway.
       })
     end,
   },
