@@ -10,9 +10,6 @@ return {
         install_dir = install_dir, -- setup() normalizes + prepends to rtp automatically
       })
 
-      -- install_dir
-      vim.o.rtp = vim.o.rtp .. "," .. install_dir .. "/"
-
       -- Install parsers — deferred so it doesn't block startup
       vim.schedule(function()
         require("nvim-treesitter").install({
