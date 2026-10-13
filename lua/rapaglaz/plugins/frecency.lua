@@ -1,6 +1,7 @@
 return {
     "nvim-telescope/telescope-frecency.nvim",
     version = "*",
+    event = "VeryLazy",
     dependencies = {
         "nvim-telescope/telescope.nvim",
     },
