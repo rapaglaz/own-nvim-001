@@ -19,8 +19,6 @@ return {
           path_display = { "smart" },
           dynamic_preview_title = true,
           winblend = 0,
-          file_sorter = require("telescope.sorters").get_fzy_sorter,
-          generic_sorter = require("telescope.sorters").get_fzy_sorter,
           vimgrep_arguments = {
             "rg", "--color=never", "--no-heading", "--with-filename",
             "--line-number", "--column", "--smart-case", "--hidden",
@@ -30,10 +28,9 @@ return {
             treesitter = true,
             timeout = 150,
           },
-        },
-        layout_config = {
-          vertical = { width = 0.7 },
-          -- other layout configuration here
+          layout_config = {
+            vertical = { width = 0.7 },
+          },
         },
         pickers = {
           find_files = {
