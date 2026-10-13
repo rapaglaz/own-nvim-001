@@ -16,22 +16,70 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "j-hui/fidget.nvim" },
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "j-hui/fidget.nvim", "b0o/schemastore.nvim" },
     config = function()
-      local lspconfig = require("lspconfig")
-      local mason_lspconfig = require("mason-lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       -- Enable workspace/didChangeWatchedFiles so LSPs react to out-of-buffer
       -- changes (e.g. git checkout, code generators, tsc --watch output).
       capabilities.workspace = vim.tbl_deep_extend("force", capabilities.workspace or {}, {
         didChangeWatchedFiles = { dynamicRegistration = true },
       })
+
+      -- mason-lspconfig v2 only installs servers and calls vim.lsp.enable();
+      -- per-server options must go through vim.lsp.config() (nvim 0.11+).
+      vim.lsp.config("*", { capabilities = capabilities })
+
       -- nvim 0.12 enables document_color by default; nvim-highlight-colors already
       -- handles color rendering with broader support (hex, Tailwind, etc.) so
       -- disable the LSP one to avoid duplicate virtual text decorations.
-      capabilities.colorProvider = false
-      -- Reused across all default-handler setups to avoid creating a new table per server
-      local default_opts = { capabilities = capabilities }
+      vim.lsp.document_color.enable(false)
+
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            runtime = { version = "LuaJIT" },
+            diagnostics = { globals = { "vim" } },
+            workspace = {
+              -- Only index VIMRUNTIME; lazydev.nvim handles plugin libs
+              -- vim.api.nvim_get_runtime_file("", true) indexes 700+ files
+              library = { vim.env.VIMRUNTIME },
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
+          },
+        },
+      })
+
+      vim.lsp.config("jsonls", {
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
+
+      vim.lsp.config("yamlls", {
+        settings = {
+          yaml = {
+            schemaStore = { enable = false, url = "" },
+            schemas = require("schemastore").yaml.schemas(),
+          },
+        },
+      })
+
+      -- TypeScript with inlay hints
+      vim.lsp.config("ts_ls", {
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayFunctionParameterTypeHints = true,
+            },
+          },
+        },
+      })
 
       local lsp_servers = {
         "bashls",
@@ -55,77 +103,17 @@ return {
         "yamlls",
       }
 
-      mason_lspconfig.setup({
+      require("mason-lspconfig").setup({
         ensure_installed = lsp_servers,
-        automatic_installation = true,
-        handlers = {
-          -- Default handler for all servers
-          function(server_name)
-            lspconfig[server_name].setup(default_opts)
-          end,
-          ["lua_ls"] = function()
-            lspconfig.lua_ls.setup({
-              capabilities = capabilities,
-              settings = {
-                Lua = {
-                  runtime = { version = "LuaJIT" },
-                  diagnostics = { globals = { "vim" } },
-                  workspace = {
-                    -- Only index VIMRUNTIME; lazydev.nvim handles plugin libs
-                    -- vim.api.nvim_get_runtime_file("", true) indexes 700+ files
-                    library = { vim.env.VIMRUNTIME },
-                    checkThirdParty = false,
-                  },
-                  telemetry = { enable = false },
-                },
-              },
-            })
-          end,
-
-          ["jsonls"] = function()
-            lspconfig.jsonls.setup({
-              capabilities = capabilities,
-              settings = {
-                json = {
-                  schemas = require("schemastore").json.schemas(),
-                  validate = { enable = true },
-                },
-              },
-            })
-          end,
-
-          ["yamlls"] = function()
-            lspconfig.yamlls.setup({
-              capabilities = capabilities,
-              settings = {
-                yaml = {
-                  schemaStore = { enable = false, url = "" },
-                  schemas = require("schemastore").yaml.schemas(),
-                },
-              },
-            })
-          end,
-
-          -- TypeScript with inlay hints
-          ["ts_ls"] = function()
-            lspconfig.ts_ls.setup({
-              capabilities = capabilities,
-              settings = {
-                typescript = {
-                  inlayHints = {
-                    includeInlayParameterNameHints = "all",
-                    includeInlayFunctionParameterTypeHints = true,
-                  },
-                },
-              },
-            })
-          end,
+        automatic_enable = {
+          -- Mason also ships these as LSP servers, but they are used through
+          -- conform.nvim / pyright here; an extra client would duplicate them.
+          exclude = { "ruff", "stylua" },
         },
       })
 
       if vim.fn.executable("haskell-language-server-wrapper") == 1 then
         vim.lsp.config("hls", {
-          capabilities = capabilities,
           settings = {
             haskell = {
               formattingProvider = "fourmolu",
