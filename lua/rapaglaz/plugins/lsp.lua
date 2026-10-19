@@ -82,6 +82,7 @@ return {
       })
 
       local lsp_servers = {
+        "angularls",
         "bashls",
         "cssls",
         "docker_compose_language_service",
@@ -111,6 +112,13 @@ return {
           exclude = { "ruff", "stylua" },
         },
       })
+
+      -- Deno comes from the system binary, not Mason. nvim-lspconfig's denols
+      -- root_dir only matches deno.json/deno.jsonc/deno.lock projects, and ts_ls
+      -- backs off there, so the two never attach to the same buffer.
+      if vim.fn.executable("deno") == 1 then
+        vim.lsp.enable("denols")
+      end
 
       if vim.fn.executable("haskell-language-server-wrapper") == 1 then
         vim.lsp.config("hls", {
