@@ -4,12 +4,12 @@ return {
     version = "*",
     cmd = { "ToggleTerm", "TermExec" },
     keys = {
-      { "<C-'>",      desc = "Toggle terminal",       mode = { "n", "i", "t" } },
-      { "<C-;>",      desc = "Toggle float terminal", mode = { "n", "i", "t" } },
-      { "<C-D-M-;>",  desc = "Kill all terminals",    mode = { "n", "i", "t" } },
+      { "<C-'>", desc = "Toggle terminal", mode = { "n", "i", "t" } },
+      { "<C-;>", desc = "Toggle float terminal", mode = { "n", "i", "t" } },
+      { "<C-D-M-;>", desc = "Kill all terminals", mode = { "n", "i", "t" } },
       { "<leader>TT", desc = "Toggle all terminals" },
-      { "<leader>Tn", desc = "Next terminal",         mode = { "n", "t" } },
-      { "<leader>Tp", desc = "Previous terminal",     mode = { "n", "t" } },
+      { "<leader>Tn", desc = "Next terminal", mode = { "n", "t" } },
+      { "<leader>Tp", desc = "Previous terminal", mode = { "n", "t" } },
     },
     config = function()
       require("toggleterm").setup({
@@ -34,7 +34,6 @@ return {
         highlights = {
           FloatBorder = { link = "FloatBorder" },
         },
-        shell = "zsh",
       })
 
       local Terminal = require("toggleterm.terminal").Terminal

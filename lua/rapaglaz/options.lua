@@ -1,3 +1,9 @@
+-- Login shell is fish; force zsh so that :!, system() and :terminal get POSIX syntax
+local zsh = vim.fn.exepath("zsh")
+if zsh ~= "" then
+  vim.opt.shell = zsh
+end
+
 -- Highlight current line
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
@@ -34,9 +40,9 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.scrolloff = 7
-vim.opt.sidescrolloff = 8  -- horizontal scroll offset
+vim.opt.sidescrolloff = 8 -- horizontal scroll offset
 vim.opt.signcolumn = "yes" -- always show sign column
-vim.opt.conceallevel = 2   -- for markdown and other files
+vim.opt.conceallevel = 2 -- for markdown and other files
 vim.opt.isfname:append("@-@")
 
 -- Disable word wrap, enable temporarily with `:set wrap` when needed
